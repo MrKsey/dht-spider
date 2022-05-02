@@ -12,10 +12,10 @@ Install docker with redis:
 ```
   mkdir -p /docker/redis && chmod -R 777 /docker/redis
 ```
-- install redis docker (don't forget to set ```<password for redis>```!)
+- install redis docker (don't forget to set ```<redis password>```!)
 ```
 docker run --name redis -d --restart=unless-stopped -p 6379:6379 -v /docker/redis:/data redislabs/redismod \
---requirepass <password for redis> \
+--requirepass <redis password> \
 --dir /data \
 --loadmodule /usr/lib/redis/modules/rejson.so \
 --loadmodule /usr/lib/redis/modules/redisearch.so
@@ -34,6 +34,6 @@ ksey/dht-spider
 | `-p 6881:6881` | DHT spider port. Must passing through from router to dht spider container.  |
 | `-e REDIS_HOST=localhost` | Redis database hostname |
 | `-e REDIS_PORT=6379` | Redis database port (default: 6379) |
-| `-e REDIS_PASSWORD=<password for redis>` | Redis password |
+| `-e REDIS_PASSWORD=<redis password>` | Redis password |
 | `-e ADD_MAGNET=true` | Generate and add magnet link to dht object in database |
 | `-e ADD_RETRACKERS=true` | Add list of retrackers to magnet link |
