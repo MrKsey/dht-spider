@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt-get update && apt-get upgrade -y
+
 ulimit -s 65535
 
 # Set alias for redis-cli
