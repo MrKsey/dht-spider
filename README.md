@@ -41,7 +41,7 @@ ksey/dht-spider
 | `-e ADD_RETRACKERS=true` | Add list of retrackers to magnet link |
 
 #
-#### ➡ Optional: Redis admin GUI
+#### ➡ Optional: Redis admin GUI - RedisInsight
 - create folder for redisinsight  
 ```
   mkdir -p /docker/redisinsight && chmod -R 777 /docker/redisinsight
