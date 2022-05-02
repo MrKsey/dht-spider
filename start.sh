@@ -42,12 +42,16 @@ else
     echo "You must manually forward port $DHT_PORT to host $MY_IP on your router."
 fi
 
+
 # Run DHT spider
 spider | grep -v "^$" | while read line; do (\
 export TORRENT_HASH=$(echo $line | jq -r .infohash); \
 export TORRENT_INFO=$(echo $line | jq -r 'del(.infohash)'); \
-export TORRENT_NAME=$(urlencode $(echo $TORRENT_INFO | jq -r .name 2>/dev/null) 2>/dev/null); \
+export TORRENT_NAME=$(echo $TORRENT_INFO | jq -r .name 2>/dev/null); \
 redis-cli JSON.SET $TORRENT_HASH . "$TORRENT_INFO" &>/dev/null; \
 echo -e "$TORRENT_HASH\t$TORRENT_NAME"; \
-[ "$ADD_MAGNET" = "true" ] &&  export MAGNET=\'\"$(echo magnet:?xt=urn:btih:$TORRENT_HASH\&dn=$TORRENT_NAME$RETRACKERS_LIST)\"\' && echo "JSON.SET $TORRENT_HASH .magnet $MAGNET" | redis-cli &>/dev/null
+[ "$ADD_MAGNET" = "true" ] && [ ! -z "$TORRENT_NAME" ] \
+&& export TORRENT_NAME=$(urlencode "$TORRENT_NAME") \
+&& export MAGNET=\'\"$(echo magnet:?xt=urn:btih:$TORRENT_HASH\&dn=$TORRENT_NAME$RETRACKERS_LIST)\"\' \
+&& echo "JSON.SET $TORRENT_HASH .magnet $MAGNET" | redis-cli &>/dev/null
 ); done
