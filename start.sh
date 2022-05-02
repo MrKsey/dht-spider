@@ -42,6 +42,7 @@ else
     echo "You must manually forward port $DHT_PORT to host $MY_IP on your router."
 fi
 
+
 # Run DHT spider
 spider | grep -v "^$" | while read line; do (\
 export TORRENT_HASH=$(echo $line | jq -r .infohash); \
