@@ -6,7 +6,7 @@ DHT spider implements the bittorrent DHT protocol in crawling mode. The standard
 - https://github.com/shiyanhui/dht
 
 ### Requrements:
-Redis - in-memory data structure store used as a database for DHT spider.  
+**Redis** - in-memory data structure store used as a database for DHT spider.  
 Install docker with redis:  
 - create folder for database  
 ```
