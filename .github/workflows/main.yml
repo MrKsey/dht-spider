@@ -1,12 +1,10 @@
-# This is a basic workflow to help you get started with Actions
 name: Docker Image CI
 
 on:
   push:
     branches: [ main ]
     paths-ignore:
-      - 'list/*'
-      - 'config/*'
+      - 'README.md'
   pull_request:
     branches: [ main ]
   
