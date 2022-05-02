@@ -15,7 +15,7 @@ COPY start.sh /start.sh
 COPY upnp_dht.sh /upnp_dht.sh
 
 RUN export DEBIAN_FRONTEND=noninteractive \
-&& export GOPATH=/gocode && mkdir -p ${GOPATH}/bin && export PATH=$PATH:$GOPATH/bin
+&& export GOPATH=/gocode && mkdir -p ${GOPATH}/bin && export PATH=$PATH:$GOPATH/bin \
 && apt-get update && apt-get upgrade -y \
 && apt-get install --no-install-recommends -y ca-certificates wget git jq curl software-properties-common iproute2 miniupnpc gridsite-clients cron \
 && add-apt-repository -y ppa:longsleep/golang-backports && apt update && apt install --no-install-recommends -y golang-go \
