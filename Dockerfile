@@ -17,10 +17,10 @@ COPY upnp_dht.sh /upnp_dht.sh
 RUN export DEBIAN_FRONTEND=noninteractive \
 && export GOPATH=/gocode && mkdir -p ${GOPATH}/bin && export PATH=$PATH:$GOPATH/bin \
 && apt-get update && apt-get upgrade -y \
-&& apt-get install --no-install-recommends -y ca-certificates wget git jq curl golang iproute2 miniupnpc gridsite-clients cron software-properties-common \
+&& apt-get install --no-install-recommends -y ca-certificates wget git jq curl golang iproute2 miniupnpc gridsite-clients cron software-properties-common gpg-agent \
 && add-apt-repository -y ppa:redislabs/redis && apt-get update && apt-get install --no-install-recommends -y redis-tools \
 && go install github.com/shiyanhui/dht/sample/spider@latest \
-&& apt-get purge -y -q --auto-remove git golang software-properties-common \
+&& apt-get purge -y -q --auto-remove git golang software-properties-common gpg-agent \
 && apt-get clean \
 && touch /var/log/cron.log \
 && ln -sf /proc/1/fd/1 /var/log/cron.log
