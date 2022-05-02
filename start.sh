@@ -46,6 +46,9 @@ else
     echo "UPnP Port Forwarding failed."
     echo "You must manually forward port $DHT_PORT to host $MY_IP on your router."
 fi
+echo " "
+echo "=================================================="
+echo " "
 
 # Run DHT spider
 spider | grep -v "^$" | while read line; do (\
