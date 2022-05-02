@@ -25,7 +25,7 @@ docker run --name redis -d --restart=unless-stopped -p 6379:6379 -v /docker/redi
 
 ### ℹ Installing DHT spider
 ```
-docker run --name dht-spider -d --restart=unless-stopped -p 6881:6881 \
+docker run --name dht-spider -d --restart=unless-stopped --net=host \
 -e REDIS_PASSWORD=<redis password> \
 -e ADD_MAGNET=true \
 -e ADD_RETRACKERS=true \
@@ -33,7 +33,6 @@ ksey/dht-spider
 ```
 | Parameters | Description |
 | --- | --- |
-| `-p 6881:6881` | DHT spider port. Must passing through from router to dht spider container.  |
 | `-e REDIS_HOST=localhost` | Redis database hostname |
 | `-e REDIS_PORT=6379` | Redis database port (default: 6379) |
 | `-e REDIS_PASSWORD=<redis password>` | Password for redis |
