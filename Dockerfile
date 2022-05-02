@@ -1,5 +1,5 @@
 #
-# Shadowsocks-rust + v2ray (websocket-http) + simple-tls (TLS1.3)
+# Bittorrent dht network spider
 #
 
 FROM ubuntu:latest
