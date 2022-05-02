@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export GOPATH=/gocode && export PATH=$PATH:$GOPATH/bin
+
 apt-get update && apt-get upgrade -y
 
 ulimit -s 65535
@@ -32,7 +34,7 @@ export DHT_PORT=6881
 export MY_IP=$(ip route | grep -E "default via" | cut -d ' ' -f 7)
 export UPDATE_SCHEDULE="0 */1 * * *"
 /etc/init.d/cron stop
-/upnp_dht.sh
+. /upnp_dht.sh
 UPNP_OK=$(upnpc -L | grep -o -s -E "UDP.*$DHT_PORT")
 if [ ! -z "$UPNP_OK" ]; then
     echo "UPnP Port Forwarding complete: $UPNP_OK"
