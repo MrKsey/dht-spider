@@ -33,7 +33,7 @@ ksey/dht-spider
 | --- | --- |
 | `-p 6881:6881` | DHT spider port. Must passing through from router to dht spider container.  |
 | `-e REDIS_HOST=localhost` | Redis database hostname |
-| `-e REDIS_PORT=6379` | Redis database port |
+| `-e REDIS_PORT=6379` | Redis database port (default: 6379) |
 | `-e REDIS_PASSWORD=<password for redis>` | Redis password |
 | `-e ADD_MAGNET=true` | Generate and add magnet link to dht object in database |
 | `-e ADD_RETRACKERS=true` | Add list of retrackers to magnet link |
