@@ -3,6 +3,7 @@
 apt-get update && apt-get upgrade -y
 
 ulimit -s 65535
+ulimit -S unlimited
 
 # Set alias for redis-cli
 if [ -z "$REDIS_PASSWORD" ]; then
