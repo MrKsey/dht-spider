@@ -9,15 +9,14 @@ ulimit -S unlimited
 
 # Set alias for redis-cli
 if [ -z "$REDIS_PASSWORD" ]; then
-    echo -e '#!/bin/bash' > /usr/local/bin/redis-cli
-    echo "/usr/bin/redis-cli -h $REDIS_HOST -p $REDIS_PORT" >> /usr/local/bin/redis-cli && chmod a+x /usr/local/bin/redis-cli
+    alias redis-cli='redis-cli -h $REDIS_HOST -p $REDIS_PORT'
 else
-    echo -e '#!/bin/bash' > /usr/local/bin/redis-cli
-    echo "/usr/bin/redis-cli -h $REDIS_HOST -p $REDIS_PORT -a $REDIS_PASSWORD --no-auth-warning" >> /usr/local/bin/redis-cli && chmod a+x /usr/local/bin/redis-cli
+    alias redis-cli='redis-cli -h $REDIS_HOST -p $REDIS_PORT -a $REDIS_PASSWORD --no-auth-warning'
 fi
+shopt -s expand_aliases
 
 # Create a new index schema
-/usr/local/bin/redis-cli FT.CREATE namesIdx ON JSON SCHEMA $.name AS name TEXT
+redis-cli FT.CREATE namesIdx ON JSON SCHEMA $.name AS name TEXT
 
 # Download and encode retrackers list
 export RETRACKERS_URL="shorturl.at/kowGM"
@@ -55,9 +54,9 @@ spider | grep -v "^$" | while read line; do (\
 export TORRENT_HASH=$(echo $line | jq -r .infohash); \
 export TORRENT_INFO=$(echo $line | jq -r 'del(.infohash)'); \
 export TORRENT_NAME=$(echo $TORRENT_INFO | jq -r .name 2>/dev/null); \
-[ ! -z "$TORRENT_NAME" ] && /usr/local/bin/redis-cli JSON.SET $TORRENT_HASH . "$TORRENT_INFO" &>/dev/null && echo -e "$TORRENT_HASH\t$TORRENT_NAME"; \
+[ ! -z "$TORRENT_NAME" ] && redis-cli JSON.SET $TORRENT_HASH . "$TORRENT_INFO" &>/dev/null && echo -e "$TORRENT_HASH\t$TORRENT_NAME"; \
 [ "$ADD_MAGNET" = "true" ] && [ ! -z "$TORRENT_NAME" ] \
 && export TORRENT_NAME=$(echo "$TORRENT_NAME" | jq -rR @uri) \
 && export MAGNET=\'\"$(echo magnet:?xt=urn:btih:$TORRENT_HASH\&dn=$TORRENT_NAME$RETRACKERS_LIST)\"\' \
-&& echo "JSON.SET $TORRENT_HASH .magnet $MAGNET" | /usr/local/bin/redis-cli &>/dev/null
+&& echo "JSON.SET $TORRENT_HASH .magnet $MAGNET" | redis-cli &>/dev/null
 ); done
