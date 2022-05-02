@@ -2,6 +2,8 @@
 DHT is the name given to the Kademlia-based distributed hash table (DHT) used by BitTorrent clients to find peers via the BitTorrent protocol.  
 DHT spider implements the bittorrent DHT protocol in crawling mode. The standard mode follows the BEPs, and you can use it as a standard dht server. The crawling mode aims to crawl as more metadata info as possiple. It doesn't follow the standard BEPs protocol. With the crawling mode, you can build another BitTorrent DHT search engine.
 
+![dht-spider](https://raw.githubusercontent.com/MrKsey/dht-spider/master/redis_db.png)
+
 ### More info:
 - https://github.com/shiyanhui/dht
 
