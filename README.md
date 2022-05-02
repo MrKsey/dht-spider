@@ -26,7 +26,7 @@ docker run --name redis -d --restart=unless-stopped -p 6379:6379 -v /docker/redi
 ### ℹ Installing DHT spider
 ```
 docker run --name dht-spider -d --restart=unless-stopped -p 6881:6881 \
--e REDIS_PASSWORD=<password for redis> \
+-e REDIS_PASSWORD=<redis password> \
 -e ADD_MAGNET=true \
 -e ADD_RETRACKERS=true \
 ksey/dht-spider
