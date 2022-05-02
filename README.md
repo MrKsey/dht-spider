@@ -5,7 +5,7 @@ DHT spider implements the bittorrent DHT protocol in crawling mode. The standard
 ### More info:
 - https://github.com/shiyanhui/dht
 
-### Requrements:
+### ❗ Requrements:
 **Redis** - in-memory data structure store used as a database for DHT spider.  
 Install docker with redis:  
 - create folder for database  
@@ -21,7 +21,7 @@ docker run --name redis -d --restart=unless-stopped -p 6379:6379 -v /docker/redi
 --loadmodule /usr/lib/redis/modules/redisearch.so
 ```
 
-### Installing DHT spider
+### ℹ Installing DHT spider
 ```
 docker run --name dht-spider -d --restart=unless-stopped -p 6881:6881 \
 -e REDIS_PASSWORD=<password for redis> \
@@ -37,3 +37,18 @@ ksey/dht-spider
 | `-e REDIS_PASSWORD=<redis password>` | Password for redis |
 | `-e ADD_MAGNET=true` | Generate and add magnet link to dht object in database |
 | `-e ADD_RETRACKERS=true` | Add list of retrackers to magnet link |
+
+#
+#### ➡ Optional: Redis admin GUI
+- create folder for redisinsight  
+```
+  mkdir -p /docker/redisinsight && chmod -R 777 /docker/redisinsight
+```
+- install redisinsight docker
+```
+docker run --name redisinsight -d --restart=unless-stopped -v /docker/redisinsight:/db -p 8001:8001 redislabs/redisinsight:latest
+```
+- open Web UI:
+```
+http://<redisinsight_HOSTNAME>:8001
+```
