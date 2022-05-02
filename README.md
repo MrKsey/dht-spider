@@ -12,7 +12,7 @@ Install docker with redis:
 ```
   mkdir -p /docker/redis && chmod -R 777 /docker/redis
 ```
-- install redis docker (don't foget to set **password for redis**!)
+- install redis docker (don't foget to set ```<password for redis>```!)
 ```
 docker run --name redis -d --restart=unless-stopped -p 6379:6379 -v /docker/redis:/data redislabs/redismod \
 --requirepass <password for redis> \
