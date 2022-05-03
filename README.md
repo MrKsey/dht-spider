@@ -60,7 +60,7 @@ The container will try to forward port 6881/UDP using UPnP, but the result is no
 | `redis-cli JSON.GET 9d7b3a082d73f409d0c33731dbb90cb65de36e2f \| jq` | Get full torrent info (add **jq** to get human readable output) |
 | `redis-cli JSON.GET 9d7b3a082d73f409d0c33731dbb90cb65de36e2f name \| jq` | Get torrent name |
 | `redis-cli JSON.GET 9d7b3a082d73f409d0c33731dbb90cb65de36e2f magnet \| jq -r` | Get magnet link without quotes |
-| `redis-cli FT.SEARCH namesIdx 'Electric Circuits'` | Search Electric Circuits in torrent names |
+| `redis-cli FT.SEARCH namesIdx 'Electric Circuits'` | Search 'Electric Circuits' words in torrent's names |
 
 #
 #### ➡ Optional: Redis admin GUI - RedisInsight
