@@ -36,7 +36,7 @@ ksey/dht-spider
 | `-e REDIS_HOST=localhost` | Redis database hostname |
 | `-e REDIS_PORT=6379` | Redis database port (default: 6379) |
 | `-e REDIS_PASSWORD=<redis password>` | Password for redis |
-| `-e REDIS_TTL=31536000 | Set the specified expire time for dht object, in seconds (default: 1 year) |
+| `-e REDIS_TTL=31536000` | Set the specified expire time for dht object, in seconds (default: 1 year) |
 | `-e ADD_MAGNET=true` | Generate and add magnet link to dht object in database |
 | `-e ADD_RETRACKERS=true` | Add list of retrackers to magnet link |
 
