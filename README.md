@@ -54,7 +54,7 @@ The container will try to forward port 6881/UDP using UPnP, but the result is no
 ```
 - [x] get data
 
-| Command | Info |
+| Command | Description |
 | --- | --- |
 | `redis-cli keys '\*'` | List all dht hashes |
 | `redis-cli JSON.GET 9d7b3a082d73f409d0c33731dbb90cb65de36e2f \| jq` | Get full torrent info (add **jq** to get human readable output) |
