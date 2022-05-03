@@ -7,14 +7,14 @@ DHT spider implements the bittorrent DHT protocol in crawling mode. The standard
 ### More info:
 - https://github.com/shiyanhui/dht
 
-### ❗ Requrements:
+### ℹ Requrements:
 **Redis** - in-memory data structure store used as a database for DHT spider.  
 Install docker with redis:  
-- create folder for database  
+- [x] create folder for database  
 ```
   mkdir -p /docker/redis && chmod -R 777 /docker/redis
 ```
-- install redis docker (don't forget to set ```<redis password>```!)
+- [x] install redis docker (don't forget to set ```<redis password>```!)
 ```
 docker run --name redis -d --restart=unless-stopped -p 6379:6379 -v /docker/redis:/data redislabs/redismod \
 --requirepass <redis password> \
@@ -40,17 +40,20 @@ ksey/dht-spider
 | `-e ADD_MAGNET=true` | Generate and add magnet link to dht object in database |
 | `-e ADD_RETRACKERS=true` | Add list of [retrackers](https://shorturl.at/kowGM) to magnet link |
 
+‼ *You must use the “port forwarding” feature on router to passing through DHT port **6881** to container. For example, if you have a router/switch/gateway/firewall, you will need to go into the configuration of this device and forward port 6881 to the container that will be running DHT spider.  
+The container will try to forward port 6881 using UPnP, but the result is not guaranteed.*
+
 #
 #### ➡ Optional: Redis admin GUI - RedisInsight
-- create folder for redisinsight  
+- [x] create folder for redisinsight  
 ```
   mkdir -p /docker/redisinsight && chmod -R 777 /docker/redisinsight
 ```
-- install redisinsight docker
+- [x] install redisinsight docker
 ```
 docker run --name redisinsight -d --restart=unless-stopped -v /docker/redisinsight:/db -p 8001:8001 redislabs/redisinsight:latest
 ```
-- open Web UI:
+- [x] open Web UI:
 ```
 http://<redisinsight_HOSTNAME>:8001
 ```
