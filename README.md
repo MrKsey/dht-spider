@@ -43,6 +43,24 @@ ksey/dht-spider
 ‼ *You must use the “port forwarding” feature on router to passing through DHT port **6881/UDP** to container. For example, if you have a router/switch/gateway/firewall, you will need to go into the configuration of this device and forward port 6881/UDP to the container that will be running DHT spider.  
 The container will try to forward port 6881/UDP using UPnP, but the result is not guaranteed.*
 
+### ℹ DHT spider data usage:
+- [x] install redis-tools and jq  
+```
+  apt-get update && apt-get install --no-install-recommends -y redis-tools jq
+```
+- [x] add alias for redis-tools  
+```
+  alias redis-cli='redis-cli -h <redis hostname> -p <redis port> -a <redis password> --no-auth-warning'
+```
+- [x] get data
+| Parameters | command |
+| --- | --- |
+| redis-cli keys '\*' | list all dht hashes |
+| `redis-cli JSON.GET 9d7b3a082d73f409d0c33731dbb90cb65de36e2f | jq` | All torrent info (add **jq** to get human readable output) |
+| `redis-cli JSON.GET 9d7b3a082d73f409d0c33731dbb90cb65de36e2f name | jq` | Get torrent name |
+| `redis-cli JSON.GET 9d7b3a082d73f409d0c33731dbb90cb65de36e2f magnet | jq -r` | magnet link without quotes |
+| `redis-cli FT.SEARCH namesIdx 'Electric Circuits'` | Search Electric Circuits in torrent names |
+
 #
 #### ➡ Optional: Redis admin GUI - RedisInsight
 - [x] create folder for redisinsight  
