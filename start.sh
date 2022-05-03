@@ -55,7 +55,7 @@ export TORRENT_HASH=$(echo $line | jq -r .infohash); \
 export TORRENT_INFO=$(echo $line | jq -r 'del(.infohash)'); \
 export TORRENT_NAME=$(echo $TORRENT_INFO | jq -r .name 2>/dev/null); \
 [ ! -z "$TORRENT_NAME" ] && redis-cli JSON.SET $TORRENT_HASH . "$TORRENT_INFO" &>/dev/null && echo -e "$TORRENT_HASH\t$TORRENT_NAME"; \
-[ $REDIS_TTL -gt 0 ] && redis-cli EXPIRE $TORRENT_HASH $REDIS_TTL; \
+[ $REDIS_TTL -gt 0 ] && redis-cli EXPIRE $TORRENT_HASH $REDIS_TTL &>/dev/null; \
 [ "$ADD_MAGNET" = "true" ] && [ ! -z "$TORRENT_NAME" ] \
 && export TORRENT_NAME=$(echo "$TORRENT_NAME" | jq -rR @uri) \
 && export MAGNET=\'\"$(echo magnet:?xt=urn:btih:$TORRENT_HASH\&dn=$TORRENT_NAME$RETRACKERS_LIST)\"\' \
