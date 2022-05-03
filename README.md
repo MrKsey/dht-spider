@@ -38,7 +38,7 @@ ksey/dht-spider
 | `-e REDIS_PASSWORD=<redis password>` | Password for redis |
 | `-e REDIS_TTL=31536000` | Set the specified expire time for dht object, in seconds (default: 1 year.  0 - no expire) |
 | `-e ADD_MAGNET=true` | Generate and add magnet link to dht object in database |
-| `-e ADD_RETRACKERS=true` | Add list of retrackers to magnet link |
+| `-e ADD_RETRACKERS=true` | Add list of ![retrackers](https://shorturl.at/kowGM) to magnet link |
 
 #
 #### ➡ Optional: Redis admin GUI - RedisInsight
