@@ -53,6 +53,7 @@ The container will try to forward port 6881/UDP using UPnP, but the result is no
   alias redis-cli='redis-cli -h <redis hostname> -p <redis port> -a <redis password> --no-auth-warning'
 ```
 - [x] get data
+
 | Parameters | command |
 | --- | --- |
 | redis-cli keys '\*' | list all dht hashes |
