@@ -56,10 +56,10 @@ The container will try to forward port 6881/UDP using UPnP, but the result is no
 
 | Parameters | command |
 | --- | --- |
-| redis-cli keys '\*' | list all dht hashes |
-| `redis-cli JSON.GET 9d7b3a082d73f409d0c33731dbb90cb65de36e2f | jq` | All torrent info (add **jq** to get human readable output) |
-| `redis-cli JSON.GET 9d7b3a082d73f409d0c33731dbb90cb65de36e2f name | jq` | Get torrent name |
-| `redis-cli JSON.GET 9d7b3a082d73f409d0c33731dbb90cb65de36e2f magnet | jq -r` | magnet link without quotes |
+| `redis-cli keys '\*'` | List all dht hashes |
+| `redis-cli JSON.GET 9d7b3a082d73f409d0c33731dbb90cb65de36e2f \| jq` | All torrent info (add **jq** to get human readable output) |
+| `redis-cli JSON.GET 9d7b3a082d73f409d0c33731dbb90cb65de36e2f name \| jq` | Get torrent name |
+| `redis-cli JSON.GET 9d7b3a082d73f409d0c33731dbb90cb65de36e2f magnet \| jq -r` | Get magnet link without quotes |
 | `redis-cli FT.SEARCH namesIdx 'Electric Circuits'` | Search Electric Circuits in torrent names |
 
 #
