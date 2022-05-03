@@ -40,8 +40,8 @@ ksey/dht-spider
 | `-e ADD_MAGNET=true` | Generate and add magnet link to dht object in database |
 | `-e ADD_RETRACKERS=true` | Add list of [retrackers](https://shorturl.at/kowGM) to magnet link |
 
-‼ *You must use the “port forwarding” feature on router to passing through DHT port **6881** to container. For example, if you have a router/switch/gateway/firewall, you will need to go into the configuration of this device and forward port 6881 to the container that will be running DHT spider.  
-The container will try to forward port 6881 using UPnP, but the result is not guaranteed.*
+‼ *You must use the “port forwarding” feature on router to passing through DHT port **6881/UDP** to container. For example, if you have a router/switch/gateway/firewall, you will need to go into the configuration of this device and forward port 6881/UDP to the container that will be running DHT spider.  
+The container will try to forward port 6881/UDP using UPnP, but the result is not guaranteed.*
 
 #
 #### ➡ Optional: Redis admin GUI - RedisInsight
